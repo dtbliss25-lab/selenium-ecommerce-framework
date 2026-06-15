@@ -19,8 +19,6 @@ public class LoginTest extends BaseTest {
                 "secret_sauce"
         );
 
-
-
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("inventory")
         );
@@ -40,6 +38,7 @@ public class LoginTest extends BaseTest {
                 driver.getPageSource().contains("Epic sadface")
         );
     }
+
     @Test
     public void lockedUserTest() {
 

@@ -9,6 +9,8 @@ public class LoginPage {
     By username = By.id("user-name");
     By password = By.id("password");
     By loginBtn = By.id("login-button");
+    By errorMessage =
+            By.cssSelector("h3[data-test='error']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -21,4 +23,12 @@ public class LoginPage {
         driver.findElement(loginBtn).click();
     }
 
+    public void clickLoginButton() {
+        driver.findElement(loginBtn).click();
+    }
+
+    public String getErrorMessage() {
+        return driver.findElement(errorMessage)
+                .getText();
+    }
 }
