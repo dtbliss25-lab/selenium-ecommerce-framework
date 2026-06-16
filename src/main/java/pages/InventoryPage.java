@@ -2,6 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class InventoryPage {
 
@@ -23,5 +27,10 @@ public class InventoryPage {
 
     public void openCart() {
         driver.findElement(cartIcon).click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector(".cart_list")
+                ));
     }
 }

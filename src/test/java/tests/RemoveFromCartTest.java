@@ -1,16 +1,21 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 
+import java.time.Duration;
+
 public class RemoveFromCartTest extends BaseTest {
 
     @Test
-    public void removeProductFromCart(){
+    public void removeProductFromCart() throws InterruptedException {
         LoginPage loginPage =
                 new LoginPage(driver);
 
@@ -30,9 +35,13 @@ public class RemoveFromCartTest extends BaseTest {
 
         cartPage.removeItem();
 
-        Assert.assertTrue(
-                cartPage.isCartEmpty()
-        );
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                By.cssSelector(".cart_item")
+        ));
+        Thread.sleep(1000);
+        Assert.assertTrue(cartPage.isCartEmpty());
 
     }
 }

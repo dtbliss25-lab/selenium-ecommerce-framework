@@ -2,6 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class CartPage {
 
@@ -17,10 +23,12 @@ public class CartPage {
     }
 
     public boolean isItemDisplayed() {
+
         return driver.findElement(cartItem).isDisplayed();
     }
 
     public void clickCheckout() {
+
         driver.findElement(checkoutButton).click();
     }
 
@@ -32,11 +40,20 @@ public class CartPage {
     }
 
     public void removeItem() {
-        driver.findElement(removeButton).click();
+
+        driver.findElement(By.id("remove-sauce-labs-backpack")).click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.invisibilityOfElementLocated(
+                        By.cssSelector(".cart_item")
+                ));
     }
 
     public boolean isCartEmpty() {
-        return driver.findElements(cartItem).isEmpty();
+
+        List<WebElement> items =
+                driver.findElements(By.cssSelector(".cart_item"));
+        return items.isEmpty();
     }
 
 }

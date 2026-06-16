@@ -24,7 +24,7 @@ public class AddToCartTest extends BaseTest {
                 new InventoryPage(driver);
 
         inventoryPage.addBackpackToCart();
-        inventoryPage.openCart();
+            inventoryPage.openCart();
 
         CartPage cartPage = new CartPage(driver);
 
