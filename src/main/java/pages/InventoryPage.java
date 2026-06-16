@@ -30,7 +30,7 @@ public class InventoryPage {
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector(".cart_list")
+                        By.id("checkout")
                 ));
     }
 }
