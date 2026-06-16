@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -30,7 +31,9 @@ public class CompleteCheckoutTest extends BaseTest {
 
         CartPage cartPage =
                 new CartPage(driver);
-
+        System.out.println("Cart items: " +
+                driver.findElements(By.className("cart_item")).size()
+        );
         cartPage.clickCheckout();
 
         CheckoutPage checkoutPage =

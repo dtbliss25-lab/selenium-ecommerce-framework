@@ -29,7 +29,11 @@ public class CartPage {
 
     public void clickCheckout() {
 
-        driver.findElement(checkoutButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.id("checkout")
+        )).click();
     }
 
     public int getCartItemCount() {
