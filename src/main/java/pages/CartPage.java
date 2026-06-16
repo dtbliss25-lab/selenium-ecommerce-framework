@@ -31,9 +31,13 @@ public class CartPage {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.id("checkout")
-        )).click();
+        WebElement checkout = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id("checkout"))
+        );
+
+        checkout.click();
+
+        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
     }
 
     public int getCartItemCount() {

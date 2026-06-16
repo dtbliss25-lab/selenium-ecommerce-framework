@@ -25,7 +25,7 @@ public class AddToCartTest extends BaseTest {
 
         inventoryPage.addBackpackToCart();
             inventoryPage.openCart();
-        System.out.println("URL after cart click: " + driver.getCurrentUrl());
+      //  System.out.println("URL after cart click: " + driver.getCurrentUrl());
         CartPage cartPage = new CartPage(driver);
 
         Assert.assertTrue(

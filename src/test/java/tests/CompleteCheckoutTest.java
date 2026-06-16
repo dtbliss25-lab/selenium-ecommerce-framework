@@ -31,13 +31,12 @@ public class CompleteCheckoutTest extends BaseTest {
 
         CartPage cartPage =
                 new CartPage(driver);
-        System.out.println("Cart items: " +
-                driver.findElements(By.className("cart_item")).size()
-        );
+       // System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size();
         cartPage.clickCheckout();
 
-        CheckoutPage checkoutPage =
-                new CheckoutPage(driver);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+
+        checkoutPage.waitForCheckoutPage();
 
         checkoutPage.enterCustomerInformation(
                 "John",
