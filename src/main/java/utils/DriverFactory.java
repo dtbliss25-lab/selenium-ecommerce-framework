@@ -12,14 +12,17 @@ public class DriverFactory {
 
         WebDriverManager.chromedriver().setup();
 
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
         ChromeOptions options = new ChromeOptions();
+
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
+
+        //  important stability flags for CI
+        options.addArguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(options);
 
         return driver;
     }

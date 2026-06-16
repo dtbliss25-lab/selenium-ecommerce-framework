@@ -2,9 +2,9 @@ name: Selenium CI Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   test:
@@ -22,7 +22,17 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      # 3. Cache Maven dependencies
+      # 3. Install Google Chrome
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      # 4. Cache Maven dependencies
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -30,11 +40,11 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      # 4. Run tests
+      # 5. Run tests
       - name: Run Selenium Tests
         run: mvn clean test
 
-      # 5. Upload Allure results
+      # 6. Upload Allure results
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
         if: always()
@@ -42,7 +52,7 @@ jobs:
           name: allure-results
           path: allure-results
 
-      # 6. Upload test reports (optional logs/screenshots)
+      # 7. Upload failure artifacts
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v4
         if: failure()
