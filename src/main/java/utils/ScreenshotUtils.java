@@ -10,26 +10,39 @@ import java.io.IOException;
 
 public class ScreenshotUtils {
 
-    public static String captureScreenshot(
-            WebDriver driver,
-            String testName) {
+    private static final String SCREENSHOT_DIR = "screenshots";
 
-        File sourceFile =
-                ((TakesScreenshot) driver)
-                        .getScreenshotAs(OutputType.FILE);
+    public static String captureScreenshot(WebDriver driver, String testName) {
 
-        String destination =
-                "screenshots/" + testName + ".png";
-
-        try {
-            FileUtils.copyFile(
-                    sourceFile,
-                    new File(destination)
-            );
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (driver == null) {
+            throw new IllegalArgumentException("WebDriver is null. Cannot capture screenshot.");
         }
 
-        return destination;
+        try {
+            // Ensure directory exists
+            File directory = new File(SCREENSHOT_DIR);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // Clean test name for file system safety
+            String safeTestName = testName.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
+
+            File sourceFile =
+                    ((TakesScreenshot) driver)
+                            .getScreenshotAs(OutputType.FILE);
+
+            String destinationPath =
+                    SCREENSHOT_DIR + File.separator + safeTestName + ".png";
+
+            File destinationFile = new File(destinationPath);
+
+            FileUtils.copyFile(sourceFile, destinationFile);
+
+            return destinationPath;
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to capture screenshot for test: " + testName, e);
+        }
     }
 }

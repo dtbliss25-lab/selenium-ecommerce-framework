@@ -1,6 +1,11 @@
 package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class LoginPage {
@@ -28,7 +33,14 @@ public class LoginPage {
     }
 
     public String getErrorMessage() {
-        return driver.findElement(errorMessage)
-                .getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        WebElement error = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector("h3[data-test='error']")
+                )
+        );
+
+        return error.getText();
     }
 }
