@@ -27,11 +27,5 @@ public class InventoryPage {
 
     public void openCart() {
         driver.findElement(cartIcon).click();
-
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector(".cart_list")
-                ));
-
     }
 }

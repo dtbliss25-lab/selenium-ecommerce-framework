@@ -60,4 +60,14 @@ public class CartPage {
         return items.isEmpty();
     }
 
+    public void waitForCartPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.urlContains("cart.html"));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.id("checkout")
+        ));
+    }
+
 }
