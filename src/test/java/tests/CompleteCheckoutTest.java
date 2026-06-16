@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -35,8 +36,6 @@ public class CompleteCheckoutTest extends BaseTest {
         cartPage.clickCheckout();
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-
-        checkoutPage.waitForCheckoutPage();
 
         checkoutPage.enterCustomerInformation(
                 "John",

@@ -29,16 +29,12 @@ public class CartPage {
 
     public void clickCheckout() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(By.id("checkout")).click();
 
-        WebElement checkout = wait.until(
-                ExpectedConditions.elementToBeClickable(By.id("checkout"))
-        );
-
-        checkout.click();
-
-        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
-    }
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.id("first-name")
+                )); }
 
     public int getCartItemCount() {
 

@@ -50,10 +50,10 @@ public class CheckoutPage {
     }
     public void waitForCheckoutPage() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.id("first-name")
-        ));
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.id("first-name")
+                ));
     }
 }
