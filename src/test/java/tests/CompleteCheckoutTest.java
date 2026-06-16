@@ -34,21 +34,13 @@ public class CompleteCheckoutTest extends BaseTest {
                 new CartPage(driver);
        // System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size();
         cartPage.clickCheckout();
-
+        System.out.println("URL after checkout click: " + driver.getCurrentUrl());
         CheckoutPage checkoutPage = new CheckoutPage(driver);
 
-        checkoutPage.enterCustomerInformation(
-                "John",
-                "Smith",
-                "3000"
-        );
-
+        checkoutPage.enterCustomerInformation("John", "Smith", "3000");
         checkoutPage.clickContinue();
-
         checkoutPage.clickFinish();
 
-        Assert.assertTrue(
-                checkoutPage.isOrderCompleted()
-        );
+        Assert.assertTrue(checkoutPage.isOrderCompleted());
     }
 }

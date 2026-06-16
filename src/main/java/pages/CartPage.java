@@ -29,12 +29,22 @@ public class CartPage {
 
     public void clickCheckout() {
 
-        driver.findElement(By.id("checkout")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(
-                        By.id("first-name")
-                )); }
+        WebElement checkoutBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id("checkout"))
+        );
+
+        checkoutBtn.click();
+
+        // HARD CONFIRM navigation succeeded
+        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
+
+        // CONFIRM next page is loaded
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.id("first-name")
+        ));
+    }
 
     public int getCartItemCount() {
 
