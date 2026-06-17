@@ -61,7 +61,7 @@ public class CartPage {
     }
 
     public void waitForCartPage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
 

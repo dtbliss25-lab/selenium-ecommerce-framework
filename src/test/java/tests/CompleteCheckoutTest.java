@@ -30,7 +30,7 @@ public class CompleteCheckoutTest extends BaseTest {
 
         CartPage cartPage = new CartPage(driver);
        // System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size();
-       // cartPage.waitForCartPage();
+        cartPage.waitForCartPage();
 
         cartPage.clickCheckout();
        // System.out.println("URL after checkout click: " + driver.getCurrentUrl());
