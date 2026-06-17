@@ -32,11 +32,14 @@ public class CartPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement checkoutBtn = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.id("checkout")));
- //       WebElement checkoutBtn =driver.findElement(By.id("checkout"));
+                ExpectedConditions.elementToBeClickable(By.id("checkout"))
+        );
+
         checkoutBtn.click();
+
         // HARD CONFIRM navigation succeeded
         wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
+
         // CONFIRM next page is loaded
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.id("first-name")
