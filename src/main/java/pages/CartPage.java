@@ -32,8 +32,7 @@ public class CartPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement checkoutBtn = wait.until(
-                ExpectedConditions.elementToBeClickable(By.id("checkout"))
-        );
+                ExpectedConditions.visibilityOfElementLocated(By.id("checkout")));
 
         checkoutBtn.click();
 
