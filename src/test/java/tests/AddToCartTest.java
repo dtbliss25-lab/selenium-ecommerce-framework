@@ -12,8 +12,7 @@ public class AddToCartTest extends BaseTest {
     @Test
     public void addProductToCart() {
 
-        LoginPage loginPage =
-                new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login(
                 "standard_user",
@@ -24,12 +23,10 @@ public class AddToCartTest extends BaseTest {
                 new InventoryPage(driver);
 
         inventoryPage.addBackpackToCart();
-            inventoryPage.openCart();
+        inventoryPage.openCart();
       //  System.out.println("URL after cart click: " + driver.getCurrentUrl());
         CartPage cartPage = new CartPage(driver);
 
-        Assert.assertTrue(
-                cartPage.isItemDisplayed()
-        );
+        Assert.assertTrue(cartPage.isItemDisplayed());
     }
 }

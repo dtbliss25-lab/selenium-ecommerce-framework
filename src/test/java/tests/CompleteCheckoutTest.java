@@ -15,30 +15,23 @@ public class CompleteCheckoutTest extends BaseTest {
     @Test
     public void completeCheckout() {
 
-        LoginPage loginPage =
-                new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login(
                 "standard_user",
                 "secret_sauce"
         );
 
-        InventoryPage inventoryPage =
-                new InventoryPage(driver);
+        InventoryPage inventoryPage = new InventoryPage(driver);
 
         inventoryPage.addBackpackToCart();
 
         inventoryPage.openCart();
 
-        CartPage cartPage =
-                new CartPage(driver);
+        CartPage cartPage = new CartPage(driver);
        // System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size();
         cartPage.waitForCartPage();
-        System.out.println("Current URL: "
-                + driver.getCurrentUrl());
 
-        System.out.println("Checkout buttons found: "
-                + driver.findElements(By.id("checkout")).size());
         cartPage.clickCheckout();
        // System.out.println("URL after checkout click: " + driver.getCurrentUrl());
 
