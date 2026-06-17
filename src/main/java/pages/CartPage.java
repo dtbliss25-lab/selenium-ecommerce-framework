@@ -29,7 +29,7 @@ public class CartPage {
 
     public void clickCheckout() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.id("checkout")
@@ -47,7 +47,7 @@ public class CartPage {
 
         driver.findElement(By.id("remove-sauce-labs-backpack")).click();
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.invisibilityOfElementLocated(
                         By.cssSelector(".cart_item")
                 ));
