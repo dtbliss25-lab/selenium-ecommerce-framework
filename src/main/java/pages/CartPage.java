@@ -29,21 +29,11 @@ public class CartPage {
 
     public void clickCheckout() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        WebElement checkoutBtn = wait.until(
-                ExpectedConditions.elementToBeClickable(By.id("checkout"))
-        );
-
-        checkoutBtn.click();
-
-        // HARD CONFIRM navigation succeeded
-        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
-
-        // CONFIRM next page is loaded
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.id("first-name")
-        ));
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.id("checkout")
+        )).click();
     }
 
     public int getCartItemCount() {
@@ -55,14 +45,12 @@ public class CartPage {
 
     public void removeItem() {
 
-        driver.findElement(removeButton).click();
+        driver.findElement(By.id("remove-sauce-labs-backpack")).click();
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(driver ->
-                        driver.findElements(
-                                By.cssSelector(".cart_item")
-                        ).isEmpty()
-                );
+                .until(ExpectedConditions.invisibilityOfElementLocated(
+                        By.cssSelector(".cart_item")
+                ));
     }
 
     public boolean isCartEmpty() {
@@ -73,7 +61,7 @@ public class CartPage {
     }
 
     public void waitForCartPage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
 
