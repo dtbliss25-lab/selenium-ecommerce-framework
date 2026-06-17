@@ -27,13 +27,14 @@ public class CompleteCheckoutTest extends BaseTest {
         inventoryPage.addBackpackToCart();
 
         inventoryPage.openCart();
-
+        System.out.println("URL after checkout click: " + driver.getCurrentUrl());
         CartPage cartPage = new CartPage(driver);
-       // System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size();
-        cartPage.waitForCartPage();
+       //System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size());
+
+        //cartPage.waitForCartPage();
 
         cartPage.clickCheckout();
-       // System.out.println("URL after checkout click: " + driver.getCurrentUrl());
+
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
 
