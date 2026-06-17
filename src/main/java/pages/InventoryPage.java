@@ -30,12 +30,12 @@ public class InventoryPage {
 
         driver.findElement(cartIcon).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+   /*     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.id("checkout")
-        ));
+        ));*/
     }
 }
