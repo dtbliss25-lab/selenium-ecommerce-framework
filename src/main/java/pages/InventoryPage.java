@@ -22,10 +22,27 @@ public class InventoryPage {
     }
 
     public void addBackpackToCart() {
+       // driver.findElement(addBackpackButton).click();
         driver.findElement(addBackpackButton).click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.id("remove-sauce-labs-backpack")
+                ));
     }
 
     public void openCart() {
+       // driver.findElement(cartIcon).click();
+
         driver.findElement(cartIcon).click();
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.urlContains("cart.html"));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.id("checkout")
+        ));
     }
 }

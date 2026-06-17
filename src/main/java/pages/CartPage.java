@@ -55,12 +55,14 @@ public class CartPage {
 
     public void removeItem() {
 
-        driver.findElement(By.id("remove-sauce-labs-backpack")).click();
+        driver.findElement(removeButton).click();
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.invisibilityOfElementLocated(
-                        By.cssSelector(".cart_item")
-                ));
+                .until(driver ->
+                        driver.findElements(
+                                By.cssSelector(".cart_item")
+                        ).isEmpty()
+                );
     }
 
     public boolean isCartEmpty() {

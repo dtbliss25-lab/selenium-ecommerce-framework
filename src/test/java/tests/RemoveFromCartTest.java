@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -28,6 +29,7 @@ public class RemoveFromCartTest extends BaseTest {
                 new InventoryPage(driver);
 
         inventoryPage.addBackpackToCart();
+
         inventoryPage.openCart();
 
         CartPage cartPage =
@@ -35,11 +37,11 @@ public class RemoveFromCartTest extends BaseTest {
 
         cartPage.removeItem();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      /*  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.cssSelector(".cart_item")
-        ));
+        ));*/
         Thread.sleep(1000);
         Assert.assertTrue(cartPage.isCartEmpty());
 
