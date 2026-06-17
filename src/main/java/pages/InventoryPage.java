@@ -31,7 +31,7 @@ public class InventoryPage {
         driver.findElement(cartIcon).click();
 
         WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(10));
+                new WebDriverWait(driver, Duration.ofSeconds(20));
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
 
