@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,6 +10,8 @@ import pages.CartPage;
 import pages.CheckoutPage;
 import pages.InventoryPage;
 import pages.LoginPage;
+
+import java.util.List;
 
 public class CompleteCheckoutTest extends BaseTest {
 
@@ -23,16 +26,21 @@ public class CompleteCheckoutTest extends BaseTest {
         );
 
         InventoryPage inventoryPage = new InventoryPage(driver);
-
+   //     System.out.println(driver.getCurrentUrl());
+      //  System.out.println(driver.getTitle());
         inventoryPage.addBackpackToCart();
 
         inventoryPage.openCart();
-        System.out.println("URL after checkout click: " + driver.getCurrentUrl());
+      //  System.out.println("URL after checkout click: " + driver.getCurrentUrl());
         CartPage cartPage = new CartPage(driver);
-       //System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size());
+   //   System.out.println("Cart items: " +driver.findElements(By.className("cart_item")).size());
 
-        //cartPage.waitForCartPage();
+        cartPage.waitForCartPage();
+       // System.out.println(driver.getCurrentUrl());
+      //  System.out.println(driver.getTitle());
+       // List<WebElement> elements = driver.findElements(By.cssSelector("checkout"));
 
+    //    System.out.println("Found elements: " + elements.size());
         cartPage.clickCheckout();
 
 

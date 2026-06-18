@@ -11,13 +11,13 @@ public class CheckoutPage {
 
     WebDriver driver;
 
-    By firstName = By.id("first-name");
-    By lastName = By.id("last-name");
-    By postalCode = By.id("postal-code");
+    By firstName = By.xpath("//*[@id=\"first-name\"]");
+    By lastName = By.xpath("//*[@id=\"last-name\"]");
+    By postalCode = By.xpath("//*[@id=\"postal-code\"]");
     By continueBtn = By.id("continue");
-    By finishBtn = By.id("finish");
+    By finishBtn = By.xpath("//*[@id=\"finish\"]");
     By confirmationMessage =
-            By.className("complete-header");
+            By.xpath("//*[@id=\"checkout_complete_container\"]/h2");
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -28,6 +28,10 @@ public class CheckoutPage {
             String last,
             String zip) {
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+   //     System.out.println(driver.getCurrentUrl());
+        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
+    //    System.out.println(driver.getCurrentUrl());
         driver.findElement(firstName).sendKeys(first);
         driver.findElement(lastName).sendKeys(last);
         driver.findElement(postalCode).sendKeys(zip);
@@ -38,6 +42,7 @@ public class CheckoutPage {
     }
 
     public void clickFinish() {
+        System.out.println(driver.getCurrentUrl());
         driver.findElement(finishBtn).click();
     }
 
