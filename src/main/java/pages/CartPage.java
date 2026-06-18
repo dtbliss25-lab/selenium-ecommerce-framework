@@ -59,12 +59,19 @@ public class CartPage {
 
     public void removeItem() {
 
-        driver.findElement(By.id("remove-sauce-labs-backpack")).click();
 
-        new WebDriverWait(driver, Duration.ofSeconds(30))
+
+     /*   new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.invisibilityOfElementLocated(
                         By.cssSelector(".cart_item")
-                ));
+                ));*/
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(ExpectedConditions.urlContains("cart.html"));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]")));
+
+        driver.findElement(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]")).click();
     }
 
     public boolean isCartEmpty() {
