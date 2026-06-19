@@ -18,7 +18,7 @@ public class CartPage {
 
     By cartItem = By.className("inventory_item_name");
     //By checkoutButton = By.id("checkout");
-   // By removeButton = By.id("remove-sauce-labs-backpack");
+   By removeButton = By.id("remove-sauce-labs-backpack");
 
 
     public CartPage(WebDriver driver) {
@@ -55,7 +55,7 @@ public class CartPage {
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
       //  System.out.println("URL: " + driver.getCurrentUrl());
-        WebElement removeBtn = wait.until(elementToBeClickable(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]")));
+        WebElement removeBtn = wait.until(ExpectedConditions.elementToBeClickable(removeButton));
 
         removeBtn.click();
     }
