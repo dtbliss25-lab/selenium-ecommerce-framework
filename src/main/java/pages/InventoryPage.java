@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class InventoryPage {
 
@@ -24,45 +24,35 @@ public class InventoryPage {
     }
 
     public void addBackpackToCart() {
-      //  driver.findElement(By.xpath("//*[@id=\"add-to-cart\"]")).click();
-      /* WebElement element;
-        element = new WebDriverWait(driver, Duration.ofSeconds(10)).
-                until(visibilityOfElementLocated(By.cssSelector("#add-to-cart")));*/
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        WebElement element1;
-        element1 = wait.until(
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        System.out.println(driver.getCurrentUrl());
+        WebElement addToCartButton;
+        addToCartButton = wait.until(
                 ExpectedConditions.elementToBeClickable(
                         By.id("add-to-cart-sauce-labs-backpack")
                 )
         );
 
-        driver.findElement( By.id("add-to-cart-sauce-labs-backpack")).click();
+        addToCartButton.click();
+
     }
 
-    public void openCart() {
-       // driver.findElement(cartIcon).click();
+    public void openCart() throws InterruptedException {
 
-      //  driver.findElement(cartIcon).click();
-
-      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-      //  wait.until(ExpectedConditions.urlContains("https://www.saucedemo.com/cart.html"));
-
-      //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout")));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         WebElement element2;
         element2 = wait.until(
                 ExpectedConditions.elementToBeClickable(
-                        By.xpath("//*[@id=\"shopping_cart_container\"]")
+                        By.className("shopping_cart_link")
                 )
         );
-        driver.findElement(cartIcon).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element2);
 
-      //  System.out.println(driver.getCurrentUrl());
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.urlContains("cart.html"));
-    //    System.out.println(driver.getCurrentUrl());
 
     }
 }

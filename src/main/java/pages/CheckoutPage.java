@@ -29,9 +29,9 @@ public class CheckoutPage {
             String zip) {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-   //     System.out.println(driver.getCurrentUrl());
+
         wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
-    //    System.out.println(driver.getCurrentUrl());
+
         driver.findElement(firstName).sendKeys(first);
         driver.findElement(lastName).sendKeys(last);
         driver.findElement(postalCode).sendKeys(zip);
@@ -42,20 +42,20 @@ public class CheckoutPage {
     }
 
     public void clickFinish() {
-        System.out.println(driver.getCurrentUrl());
+
         driver.findElement(finishBtn).click();
     }
 
     public boolean isOrderCompleted() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        wait.until(ExpectedConditions.urlContains("checkout-complete.html"));
         return driver.findElement(
                         confirmationMessage)
                 .getText()
                 .contains("Thank you");
     }
     public void waitForCheckoutPage() {
-
-
         new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.visibilityOfElementLocated(
                         By.id("first-name")

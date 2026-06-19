@@ -10,7 +10,7 @@ import pages.LoginPage;
 public class EmptyCartTest extends BaseTest {
 
     @Test
-    public void verifyCartIsEmpty() {
+    public void verifyCartIsEmpty() throws InterruptedException {
 
         LoginPage loginPage =
                 new LoginPage(driver);

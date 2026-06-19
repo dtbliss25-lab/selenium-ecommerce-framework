@@ -16,7 +16,7 @@ import java.util.List;
 public class CompleteCheckoutTest extends BaseTest {
 
     @Test
-    public void completeCheckout() {
+    public void completeCheckout() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
 

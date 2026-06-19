@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class CartPage {
@@ -17,7 +18,7 @@ public class CartPage {
 
     By cartItem = By.className("inventory_item_name");
     //By checkoutButton = By.id("checkout");
-    //By removeButton = By.id("remove-sauce-labs-backpack");
+   // By removeButton = By.id("remove-sauce-labs-backpack");
 
 
     public CartPage(WebDriver driver) {
@@ -30,23 +31,14 @@ public class CartPage {
     }
 
     public void clickCheckout() {
-      //  driver.findElement(checkoutButton).click();
-   /*  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.id("checkout")
-        )).click();
-*/
-        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement element;
         element = new WebDriverWait(driver, Duration.ofSeconds(10)).
                 until(visibilityOfElementLocated((
                         By.xpath("//*[@id=\"checkout\"]"))
                 ));
 
-        //   until(ExpectedConditions.visibilityOfElementLocated((By.cssSelector("#checkout"))
-
-        driver.findElement(By.xpath("//*[@id=\"checkout\"]")).click();
+        element.click();
 
     }
 
@@ -59,19 +51,13 @@ public class CartPage {
 
     public void removeItem() {
 
-
-
-     /*   new WebDriverWait(driver, Duration.ofSeconds(30))
-                .until(ExpectedConditions.invisibilityOfElementLocated(
-                        By.cssSelector(".cart_item")
-                ));*/
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         wait.until(ExpectedConditions.urlContains("cart.html"));
+      //  System.out.println("URL: " + driver.getCurrentUrl());
+        WebElement removeBtn = wait.until(elementToBeClickable(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]")));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]")));
-
-        driver.findElement(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]")).click();
+        removeBtn.click();
     }
 
     public boolean isCartEmpty() {
@@ -82,11 +68,6 @@ public class CartPage {
     }
 
     public void waitForCartPage() {
-       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-       // wait.until(ExpectedConditions.urlContains("cart.html"));
-
-       //wait.until(ExpectedConditions.elementToBeClickable(By.id("checkout")));
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 

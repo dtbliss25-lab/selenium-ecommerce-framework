@@ -37,10 +37,10 @@ public class RemoveFromCartTest extends BaseTest {
 
         cartPage.removeItem();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                By.cssSelector(".cart_item")
+                By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]")
         ));
         Thread.sleep(1000);
         Assert.assertTrue(cartPage.isCartEmpty());
