@@ -28,10 +28,6 @@ public class CheckoutPage {
             String last,
             String zip) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        wait.until(ExpectedConditions.urlContains("checkout-step-one.html"));
-
         driver.findElement(firstName).sendKeys(first);
         driver.findElement(lastName).sendKeys(last);
         driver.findElement(postalCode).sendKeys(zip);

@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -11,6 +12,7 @@ import pages.CheckoutPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 
+import java.time.Duration;
 import java.util.List;
 
 public class CompleteCheckoutTest extends BaseTest {
@@ -44,8 +46,12 @@ public class CompleteCheckoutTest extends BaseTest {
         cartPage.clickCheckout();
 
 
+
         CheckoutPage checkoutPage = new CheckoutPage(driver);
 
+        checkoutPage.waitForCheckoutPage();
+
+        System.out.println(driver.getCurrentUrl());
         checkoutPage.enterCustomerInformation("John", "Smith", "3000");
         checkoutPage.clickContinue();
         checkoutPage.clickFinish();

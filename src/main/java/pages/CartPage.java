@@ -17,7 +17,7 @@ public class CartPage {
     WebDriver driver;
 
     By cartItem = By.className("inventory_item_name");
-    //By checkoutButton = By.id("checkout");
+    By checkoutButton = By.id("checkout");
    By removeButton = By.id("remove-sauce-labs-backpack");
 
 
@@ -31,14 +31,11 @@ public class CartPage {
     }
 
     public void clickCheckout() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement checkoutbtn;
+        checkoutbtn = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
 
-        WebElement element;
-        element = new WebDriverWait(driver, Duration.ofSeconds(10)).
-                until(visibilityOfElementLocated((
-                        By.xpath("//*[@id=\"checkout\"]"))
-                ));
-
-        element.click();
+        checkoutbtn.click();
 
     }
 

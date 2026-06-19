@@ -26,7 +26,7 @@ public class InventoryPage {
     public void addBackpackToCart() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        System.out.println(driver.getCurrentUrl());
+       // System.out.println(driver.getCurrentUrl());
         WebElement addToCartButton;
         addToCartButton = wait.until(
                 ExpectedConditions.elementToBeClickable(
