@@ -21,14 +21,11 @@
 
 ## Framework Architecture
 Test Cases (TestNG)
-|
-↓
+ ↓
 Test Layer
-|
-↓
+ ↓
 Page Objects (Selenium WebDriver)
-|
-↓
+ ↓
 Reusable Components
 |
 ├── Driver Manager
@@ -36,11 +33,9 @@ Reusable Components
 ├── Configuration Manager
 ├── Test Data Manager
 └── Common Helpers
-|
-↓
+ ↓
 Reporting Layer (Allure)
-|
-↓
+ ↓
 CI/CD Pipeline (GitHub Actions)
 
 ## Test Scenarios
