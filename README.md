@@ -20,23 +20,23 @@
 - Easy test case creation and maintenance
 
 ## Framework Architecture
-Test Cases (TestNG)
+-Test Cases (TestNG)
  ↓
-Test Layer
+-Test Layer
  ↓
-Page Objects (Selenium WebDriver)
+-Page Objects (Selenium WebDriver)
  ↓
-Reusable Components
+-Reusable Components
 |
-├── Driver Manager
-├── Wait Utilities
-├── Configuration Manager
-├── Test Data Manager
-└── Common Helpers
+-Driver Manager
+-Wait Utilities
+-Configuration Manager
+-Test Data Manager
+-Common Helpers
  ↓
-Reporting Layer (Allure)
+-Reporting Layer (Allure)
  ↓
-CI/CD Pipeline (GitHub Actions)
+-CI/CD Pipeline (GitHub Actions)
 
 ## Test Scenarios
 
