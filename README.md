@@ -20,11 +20,11 @@
 - Easy test case creation and maintenance
 
 ## Framework Architecture
--Test Cases (TestNG)
+- Test Cases (TestNG)
  ↓
--Test Layer
+- Test Layer
  ↓
--Page Objects (Selenium WebDriver)
+- Page Objects (Selenium WebDriver)
  ↓
 -Reusable Components
 |
